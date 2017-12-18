@@ -1,0 +1,37 @@
+<h1 class="header center">Step 3. Picking flights</h1>
+<h5 class="header center s12 light">
+  Select all the flights on which you want to register your device!
+  Once done click on the done button and we will make your device watch all the selected flights!
+</h5>
+<a class="btn-floating btn-large waves-effect waves-light red" (click)="registerFlights()"><i class="material-icons">done</i></a>
+
+<div class="row">
+  <table>
+    <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Select</th>
+      <th>Airline</th>
+      <th>Flight Number</th>
+      <th>Dep Time</th>
+      <th>Arrival Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let flight of fsFlights;let i = index">
+      <td>{{i+1}}</td>
+      <td>
+        <p>
+          <input type="checkbox" id="{{i}}" (click)="selectFlight($event,flight)" />
+          <label for="{{i}}"></label>
+        </p></td>
+      <td>{{flight.carrierFsCode}}</td>
+      <td>{{flight.flightNumber}}</td>
+      <td>{{getTime(flight.departureTime, flight, 1)}}</td>
+      <td>{{getTime(flight.arrivalTime, flight, 0)}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+

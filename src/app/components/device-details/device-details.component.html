@@ -1,0 +1,23 @@
+<h1 class="header center">Step 1. Device Details</h1>
+<h5 class="header center s12 light">Please select the platform and then enter your device token. Click on the done button to move to the next screen</h5>
+<div class="card col l12 m6 s12">
+  <div class="card-content">
+
+    <input name="request.courier.group" type="radio" id="platform-ios" [(ngModel)]="courier.group" [ngModelOptions]="{standalone:true}" value="apns"/>
+    <label for="platform-ios">iOS</label>
+
+    <input name="request.courier.group" type="radio" id="platform-android" [(ngModel)]="courier.group" [ngModelOptions]="{standalone:true}" value="gcm"/>
+    <label for="platform-android">Android</label>
+
+
+    <div class="col l12 m6 s12">
+      <div class="input-field">
+        <input placeholder="Token Value" id="token" type="text" class="validate" [(ngModel)]="courier.token" [ngModelOptions]="{standalone:true}">
+        <label for="token">Token</label>
+      </div>
+    </div>
+  </div>
+  <div class="card-action">
+    <a class="btn-floating btn-large waves-effect waves-light red" (click)="handleClick()"><i class="material-icons">done</i></a>
+  </div>
+</div>

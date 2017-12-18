@@ -1,0 +1,11 @@
+<h1 class="header center">Confirmation!</h1>
+<h5 class="header center s12 light">We have received your request for registration and we will process it!</h5>
+
+
+<h6 class="header center s12 light">To check if you are registered or not use the following DB query!</h6>
+
+<h5 class="header center s12 light">
+  select * from flights where id in (select flight_id from user_flight where user_id=(select user_id from watchers where token="your Token value"));
+</h5>
+
+
