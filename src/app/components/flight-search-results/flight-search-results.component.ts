@@ -21,6 +21,7 @@ export class FlightSearchResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._dataService.clearFlightsPayload();
     this.fsFlights = this._dataService.searchedFlights;
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {FlightRequestPayload, Courier, User, Airport, FSFlight, Flight} from "../searchRequest";
 
 @Injectable()
@@ -7,6 +7,7 @@ export class RegistrationRequestDataProviderService {
   get searchedFlights(): FSFlight[] {
     return this._searchedFlights;
   }
+
   get request(): FlightRequestPayload {
     return this._request;
   }
@@ -19,11 +20,11 @@ export class RegistrationRequestDataProviderService {
 
   airports: Airport[]
 
-  private _searchedFlights:FSFlight[]
+  private _searchedFlights: FSFlight[]
 
   constructor() {
     var user = new User("1871580", "763d6d1a-8aec-4098-9789-85ce59ace348", "1", "0");
-    this._request = new FlightRequestPayload(user,null,[]);
+    this._request = new FlightRequestPayload(user, null, []);
   }
 
   setCourier(courier: Courier) {
@@ -44,6 +45,10 @@ export class RegistrationRequestDataProviderService {
 
   deleteFlightFromPayload(i: number) {
     this._request.flights.splice(i, 1);
+  }
+
+  clearFlightsPayload() {
+    this._request.flights = [];
   }
 
   addFlightToPayload(fsRegisterFlight: Flight) {
