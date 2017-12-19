@@ -22,10 +22,8 @@ export class TnsService {
 
   public fetchFlightsLocal(request: FlightSearchRequest): Observable<FlightSearchResponse> {
     //"appId":"d434c40a","appKey":"9d17145a31f9c8eb15a34baea1d611b4"
-    return this._jsonp.get("https://api.flightstats.com/flex/schedules/rest/v1/jsonp/from/" + request.origin + "/to/" + request.destination + "/departing/" + request.year + "/" + request.month + "/" + request.day + "?appId=d434c40a&appKey=9d17145a31f9c8eb15a34baea1d611b4&callback=JSONP_CALLBACK")
+    var date = new Date(request.date);
+    return this._jsonp.get("https://api.flightstats.com/flex/schedules/rest/v1/jsonp/from/" + request.origin + "/to/" + request.destination + "/departing/" + date.getFullYear() + "/" + (date.getMonth()+1) + "/" + date.getDate()+ "?appId=d434c40a&appKey=9d17145a31f9c8eb15a34baea1d611b4&callback=JSONP_CALLBACK")
     .map(res => res.json());
-
   }
-
-
 }

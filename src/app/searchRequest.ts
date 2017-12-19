@@ -12,9 +12,7 @@ export class FlightRequestPayload {
 export class FlightSearchRequest {
   constructor(public origin: string,
               public destination: string,
-              public year: string,
-              public month: string,
-              public day: string
+              public date: Date
 
   ) {
 
@@ -148,7 +146,6 @@ export class Flight {
     public destination: string,
     public flight_no: string,
     public origin: string,
-    public processingDone:boolean
 
   ) {
 

@@ -1,8 +1,22 @@
-<h1 class="header center">Step 1. Device Details</h1>
-<h5 class="header center s12 light">Please select the platform and then enter your device token. Click on the done button to move to the next screen</h5>
+<h1 class="header center">Step 1. User + Device Details</h1>
+<h5 class="header center s12 light">Please enter the details and then click on the done button to move to the next screen</h5>
 <div class="card col l12 m6 s12">
   <div class="card-content">
+    <h5 class="blue-text"> User details</h5>
+    <div class="col l4 m6 s12">
+      <div class="input-field">
+        <input placeholder="siteId" id="siteId" type="text" class="validate" [(ngModel)]="user.siteid" [ngModelOptions]="{standalone:true}">
+        <label for="siteId">siteId</label>
+      </div>
+    </div>
 
+    <div class="col l4 m6 s12">
+      <div class="input-field">
+        <input placeholder="tuid" id="tuid" type="text" class="validate" [(ngModel)]="user.tuid" [ngModelOptions]="{standalone:true}">
+        <label for="tuid">tuid</label>
+      </div>
+    </div>
+    <h5 class="blue-text"> device details</h5>
     <input name="request.courier.group" type="radio" id="platform-ios" [(ngModel)]="courier.group" [ngModelOptions]="{standalone:true}" value="apns"/>
     <label for="platform-ios">iOS</label>
 

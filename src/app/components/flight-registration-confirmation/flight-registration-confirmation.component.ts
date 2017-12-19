@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {RegistrationRequestDataProviderService} from "../../services/registration-request-data-provider.service";
 import {Router} from "@angular/router";
-import {FlightSearchRequest} from "../../searchRequest";
+import {FlightSearchRequest, FlightRequestPayload} from "../../searchRequest";
 
 @Component({
   selector: 'app-flight-registration-confirmation',
@@ -10,9 +10,11 @@ import {FlightSearchRequest} from "../../searchRequest";
 })
 export class FlightRegistrationConfirmationComponent implements OnInit {
 
-  search: FlightSearchRequest
+  request: FlightRequestPayload
 
-  constructor(private _dataService: RegistrationRequestDataProviderService, private _router: Router) { }
+  constructor(private _dataService: RegistrationRequestDataProviderService, private _router: Router) {
+    this.request = _dataService.request;
+  }
 
   ngOnInit() {
   }

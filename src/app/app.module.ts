@@ -11,6 +11,7 @@ import {FlightSearchResultsComponent} from "./components/flight-search-results/f
 import {FlightRegistrationConfirmationComponent} from "./components/flight-registration-confirmation/flight-registration-confirmation.component";
 import {RegistrationRequestDataProviderService} from "./services/registration-request-data-provider.service";
 import {TnsService} from "./services/tns.service";
+import {SelectedFlightsComponent} from "./components/selected-flights/selected-flights.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {TnsService} from "./services/tns.service";
     FlightSearchFormComponent,
     FlightSearchResultsComponent,
     FlightRegistrationConfirmationComponent,
+    SelectedFlightsComponent,
   ],
   imports: [
     BrowserModule,

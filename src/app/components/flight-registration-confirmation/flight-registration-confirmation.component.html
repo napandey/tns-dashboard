@@ -4,8 +4,37 @@
 
 <h6 class="header center s12 light">To check if you are registered or not use the following DB query!</h6>
 
-<h5 class="header center s12 light">
-  select * from flights where id in (select flight_id from user_flight where user_id=(select user_id from watchers where token="your Token value"));
+<h5 class="header center s12 light blue-text">
+  select a.* from flights a, user_flight b, watchers c where c.token = "{{request.courier.token}}" and c.user_id = b.user_id and b.flight_id = a.id;
 </h5>
+
+<div class="card-panel">
+  <p class="blue-text">SiteId: {{request.user.siteid}}</p>
+  <p class="blue-text">Tuid: {{request.user.tuid}}</p>
+  <p class="blue-text">Token: {{request.courier.token}}</p>
+</div>
+
+<div *ngIf="request.flights!=null && request.flights.length!=0">
+  <table>
+    <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Airline</th>
+      <th>Flight Number</th>
+      <th>Dep Time</th>
+      <th>Arrival Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let flight of request.flights;let i = index">
+      <td>{{i+1}}</td>
+      <td>{{flight.airline}}</td>
+      <td>{{flight.flight_no}}</td>
+      <td>{{flight.departure_date}}</td>
+      <td>{{flight.arrival_date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 

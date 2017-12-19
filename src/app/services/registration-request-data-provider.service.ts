@@ -3,6 +3,9 @@ import {FlightRequestPayload, Courier, User, Airport, FSFlight, Flight} from "..
 
 @Injectable()
 export class RegistrationRequestDataProviderService {
+  get airports(): Airport[] {
+    return this._airports;
+  }
 
   get searchedFlights(): FSFlight[] {
     return this._searchedFlights;
@@ -18,7 +21,7 @@ export class RegistrationRequestDataProviderService {
 
   private _request: FlightRequestPayload
 
-  airports: Airport[]
+  private _airports: Airport[]
 
   private _searchedFlights: FSFlight[]
 
@@ -32,7 +35,7 @@ export class RegistrationRequestDataProviderService {
   }
 
   setAirPorts(airports: Airport[]) {
-    this.airports = airports;
+    this._airports = airports;
   }
 
   setFlights(scheduledFlights: FSFlight[]) {
@@ -53,5 +56,13 @@ export class RegistrationRequestDataProviderService {
 
   addFlightToPayload(fsRegisterFlight: Flight) {
     this._request.flights.push(fsRegisterFlight);
+  }
+
+  setFlightsPayload(flights: Flight[]) {
+    this._request.flights = flights;
+  }
+
+  setUser(user: User) {
+    this._request.user = user;
   }
 }

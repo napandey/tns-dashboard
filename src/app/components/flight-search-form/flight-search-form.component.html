@@ -1,45 +1,48 @@
-<h1 class="header center">Step 2. Flight search</h1>
+<h3 class="header center">Search Flight and create your flight lists</h3>
 <h5 class="header center s12 light">This form uses actual Flightstats to fetch the flights between two destinations!</h5>
-<div class="card col l12 m6 s12">
-  <div class="card-content">
-    <div class="col l6 m6 s12">
-      <div class="input-field">
-        <input placeholder="Origin Value" id="origin" type="text" class="validate" [(ngModel)]="search.origin" [ngModelOptions]="{standalone:true}">
-        <label for="origin">Origin</label>
+<div class="row">
+  <div class="col l6 m6 s12">
+
+      <div class="row">
+        <div class="col l4 m6 s12">
+          <div class="input-field">
+            <input placeholder="Origin Value" id="origin" type="text" class="validate" [(ngModel)]="search.origin" [ngModelOptions]="{standalone:true}">
+            <label for="origin">Origin</label>
+          </div>
+        </div>
+        <div class="col l4 m6 s12">
+          <div class="input-field">
+            <input placeholder="Destination Value" id="destination" type="text" class="validate" [(ngModel)]="search.destination" [ngModelOptions]="{standalone:true}">
+            <label for="destination">Destination</label>
+          </div>
+        </div>
+        <div class="col l4 m6 s12">
+          <div class="input-field">
+            <input placeholder="Destination Value" id="datepicker" type="date" class="datepicker" [(ngModel)]="search.date" [ngModelOptions]="{standalone:true}">
+          </div>
+        </div>
       </div>
+
+    <div class="">
+      <a (click)="fetchFlights()" class="waves-effect waves-light btn">Fetch Flights</a>
     </div>
-    <div class="col l6 m6 s12">
-      <div class="input-field">
-        <input placeholder="Destination Value" id="destination" type="text" class="validate" [(ngModel)]="search.destination" [ngModelOptions]="{standalone:true}">
-        <label for="destination">Destination</label>
-      </div>
-    </div>
-
-
-    <div class="col l4 m6 s12">
-      <div class="input-field">
-        <input placeholder="Year Value" id="year" type="text" class="validate" [(ngModel)]="search.year" [ngModelOptions]="{standalone:true}">
-        <label for="year">Year</label>
-      </div>
-    </div>
-    <div class="col l4 m6 s12">
-      <div class="input-field">
-        <input placeholder="Month Value" id="month" type="text" class="validate" [(ngModel)]="search.month" [ngModelOptions]="{standalone:true}">
-        <label for="month">Month</label>
-      </div>
-    </div>
-
-    <div class="col l4 m6 s12">
-      <div class="input-field">
-        <input placeholder="Day Value" id="day" type="text" class="validate" [(ngModel)]="search.day" [ngModelOptions]="{standalone:true}">
-        <label for="day">day</label>
-      </div>
-    </div>
-
-
-
-
   </div>
-
+    <div class="col l6 m6 s12" *ngIf="selectedFlights.length!=0">
+      <h5 class="subheader">
+        Selected flight that would be registered!
+      </h5>
+        <app-selected-flights [flights]="selectedFlights"
+                              (removeFlightEvent)="removeFlight($event)"
+        ></app-selected-flights>
+    </div>
 </div>
-<a class="btn-floating btn-large waves-effect waves-light red" (click)="fetchFlights()"><i class="material-icons">done</i></a>
+
+
+
+<a class="btn-large waves-effect waves-light red" (click)="registerFlights()">Register</a>
+<div *ngIf="flightSearchResponse!=null && flightSearchResponse.scheduledFlights.length!=0 && fetchingFlights!=true">
+  <app-flight-search-results [fsFlights]="flightSearchResponse.scheduledFlights" [airports]="flightSearchResponse.appendix.airports"
+                             (selectFlightEvent)="addFlight($event)"
+  ></app-flight-search-results>
+</div>
+

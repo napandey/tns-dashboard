@@ -1,0 +1,27 @@
+<div *ngIf="flights!=null && flights.length!=0">
+  <table>
+    <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Remove</th>
+      <th>Airline</th>
+      <th>Flight Number</th>
+      <th>Dep Time</th>
+      <th>Arrival Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let flight of flights;let i = index">
+      <td>{{i+1}}</td>
+      <td><a class="btn-floating waves-effect waves-light red" (click)="removeFlight(flight)"><i class="material-icons">close</i></a></td>
+      <td>{{flight.airline}}</td>
+      <td>{{flight.flight_no}}</td>
+      <td>{{flight.departure_date}}</td>
+      <td>{{flight.arrival_date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
