@@ -49,9 +49,9 @@ export class FlightSearchResultsComponent implements OnInit {
     }
     if (add) {
       var momentDate = momentTimeZone(flight.departureTime);
-      var depDate = momentDate.tz(this.getZoneFromAirportCode(flight.departureAirportFsCode)).format("YYYY-MM-DDTHH:mm:ss.SSSZZ");
+      var depDate = momentDate.tz(this.getZoneFromAirportCode(flight.departureAirportFsCode))._i + momentDate.tz(this.getZoneFromAirportCode(flight.departureAirportFsCode)).format("ZZ");
       momentDate = momentTimeZone(flight.arrivalTime);
-      var arrival_date = momentDate.tz(this.getZoneFromAirportCode(flight.arrivalAirportFsCode)).format("YYYY-MM-DDTHH:mm:ss.SSSZZ")
+      var arrival_date = momentDate.tz(this.getZoneFromAirportCode(flight.arrivalAirportFsCode))._i + momentDate.tz(this.getZoneFromAirportCode(flight.arrivalAirportFsCode)).format("ZZ");
 
       var fsRegisterFlight: Flight = new Flight(flight.carrierFsCode, arrival_date,
         depDate, flight.arrivalAirportFsCode, flight.flightNumber, flight.departureAirportFsCode);
